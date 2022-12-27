@@ -6,7 +6,7 @@ SELECT *
 FROM PortfolioProject..CovidVaccinations
 ORDER BY location, date;
 
---Querying important data
+--Query sample to obtain data
 
 SELECT location, date, total_cases, new_cases, total_deaths, population
 FROM PortfolioProject..CovidDeaths
@@ -14,7 +14,7 @@ FROM PortfolioProject..CovidDeaths
 ORDER BY location, date;
 
 --Percentage of Total deaths to Total cases
---Shows the probability of dying from Covid in Nigeria
+--Shows the probability of dying from Covid in Nigeria and the United States
 
 SELECT location, date, total_cases, total_deaths, (total_deaths/total_cases)*100 AS "percentage_death_to_cases"
 FROM PortfolioProject..CovidDeaths
@@ -45,10 +45,10 @@ GROUP BY location, population
 ORDER BY highest_percentage_deaths_to_population DESC;
 
 /*In the Original data, it is observed that the value of continent is set to NULL when location carries 
-a value for a continents name (e.g location = Africa) instead of the usual country name (e.g location = Nigeria).
+a value for a continent's name (e.g location = Africa) instead of the usual country name (e.g location = Nigeria).
 HENCE, to retrieve data representative of countries only, "WHERE continent IS NOT NULL" is used*/
 
---Shows the data obtained from individual countries alone.
+--Shows the maximum total deaths obtained from individual countries alone.
 
 SELECT location, population, MAX(CAST(total_deaths AS INT)) AS "highest_death_count", MAX(CAST(total_deaths AS INT)/population)*100 AS "highest_percentage_deaths_to_population"
 FROM PortfolioProject..CovidDeaths
@@ -56,7 +56,7 @@ WHERE continent IS NOT NULL
 GROUP BY location, population
 ORDER BY highest_percentage_deaths_to_population DESC;
 
---Shows the data by continent and other location groups only (excludes all locations WHERE continent is NOT NULL)
+--Shows the maximum total deaths by the continents and other location groups (excludes all locations WHERE continent is NOT NULL)
 
 SELECT location, MAX(CAST(total_deaths AS INT)) AS "highest_death_count"
 FROM PortfolioProject..CovidDeaths
@@ -64,7 +64,7 @@ WHERE continent IS NULL
 GROUP BY location
 ORDER BY highest_death_count DESC;
 
---Shows the data by continent only
+--Shows maximum of total deaths by the continents
 
 SELECT continent, MAX(CAST(total_deaths AS INT)) AS "highest_death_count"
 FROM PortfolioProject..CovidDeaths
@@ -72,9 +72,9 @@ WHERE continent IS NOT NULL
 GROUP BY continent
 ORDER BY highest_death_count DESC;
 
---Global Numbers for each day
+--Global New COVID cases and deaths for each day
 
-SELECT date, SUM(new_cases) AS 'global_cases', SUM(CAST(new_deaths AS INT)) AS 'global_deaths', SUM(CAST(new_deaths AS INT))/SUM(new_cases) AS 'percentage_global_deaths'
+SELECT date, SUM(new_cases) AS 'global_cases', SUM(CAST(new_deaths AS INT)) AS 'global_deaths', SUM(CAST(new_deaths AS INT))/SUM(new_cases) * 100 AS 'percentage_global_deaths'
 FROM PortfolioProject..CovidDeaths
 WHERE continent IS NOT NULL
 GROUP BY date
