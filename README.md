@@ -1,2 +1,2 @@
 # PortfolioProjects
-Shows some of the queries I wrote while learning SQL
+Demonstrates my proficiency in SQL with simple and complex queries
