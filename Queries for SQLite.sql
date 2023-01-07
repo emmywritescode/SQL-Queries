@@ -38,3 +38,34 @@ COUNT(City) AS num_of_customers
 FROM Customers
 GROUP BY City
 ORDER BY num_of_customers DESC;
+
+
+--This nested query will find the names of all the tracks for the album "Californication"
+
+SELECT Name
+FROM Tracks
+WHERE AlbumId =
+(SELECT AlbumId 
+fROM Albums
+WHERE Title = 'Californication');
+
+
+--Self joining a table to itself without the join function
+--This will retrieve a list with the managers last name, and the last name of the employees who report to him or her
+
+SELECT emp.LastName AS employee,
+rept.LastName AS manager
+FROM
+Employees emp, Employees rept
+WHERE emp.EmployeeId = rept.ReportsTo;
+
+--Self joining a table to itself using the inner join function
+--This will retrieve a list with the managers last name, and the last name of the employees who report to him or her
+
+SELECT emp.LastName AS employee,
+rept.LastName AS manager
+FROM
+Employees emp
+INNER JOIN
+Employees rept
+ON emp.EmployeeId = rept.ReportsTo;
