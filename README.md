@@ -1,5 +1,7 @@
 # SQL Queries
-This repository contains a collection of SQL queries that I wrote for self-practice and to work on personal projects. Each query is contained in a separate file and is named according to the task it performs.
+![](sql_.png)
+## Introduction
+This repository contains a collection of SQL queries that I wrote for self-practice or to work on personal projects. Each sql file contains a list of well formatted queries that are self-explanatory.
 
 ## Files
 Here is a list of the files in this repository and a brief description of what each query does:
