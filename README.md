@@ -6,7 +6,7 @@ This repository contains a collection of SQL queries that I wrote for self-pract
 ## Files
 Here is a list of the files in this repository and a brief description of what each query does:
 
-- **_CovidDataQuery.sql_**: Contains queries that gives insight to global cases, vaccinations and deaths resulting from the deadly COVID-19 virus.
+- **_CovidDataQuery.sql_**: Contains queries that gives insight to global cases, vaccinations and deaths resulting from the deadly COVID-19 virus. A guided project with assistance from Alex Freberg.
 - **_Queries for SQLite.sql_**: Contains queries that are appropriate for SQLite syntax.
 - **_YELP Dataset SQL Lookup.sql_**: Contains queries that retrieves data from the online Yelp database.
 - **_Adventure Works Cycles 2019.sql_**: Contains queries that retrieves data from the 'AdventureWorks2019.bak' database provided by Microsoft.
